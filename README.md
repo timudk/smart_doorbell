@@ -1,3 +1,17 @@
+.container {
+  float: left;
+}
+
+.image {
+  display: block
+}
+
+.caption {
+  display: block;
+  width: 100%;
+  text-align: center; //assuming centered captions
+}
+
 # Smart doorbell
 Find out who is ringing your door bell and pass on personalized messages to your visitors when you are not at home. 
 
@@ -19,10 +33,13 @@ The code is based on the following packages that have to be installed in advance
 ### Running the test
 
 In order to test the application, I have created Anon's frienst list:
-<div id="friends">
-    <li><img src="https://github.com/timudk/smart_doorbell/blob/master/test_friend_list/images/friend_angela.jpg" width="100"></li>
-    <li><img src="https://github.com/timudk/smart_doorbell/blob/master/test_friend_list/images/friend_angelique.jpg" width="100"></li>
-</div>
-#images {
-    white-space: nowrap;
-}
+<ul>
+  <li class="container">
+    <img class="image" src="https://github.com/timudk/smart_doorbell/blob/master/test_friend_list/images/friend_angela.jpg"  width = "100" />
+    <span class="caption">my caption</span>
+  </li>
+  <li class="container">
+    <img class="image" src="https://github.com/timudk/smart_doorbell/blob/master/test_friend_list/images/friend_angelique.jpg"  width = "100" />
+    <span class="caption">my caption</span>
+  </li>
+</ul>
