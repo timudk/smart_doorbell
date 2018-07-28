@@ -8,3 +8,18 @@ In order to use the smart doorbell you have to create a hidden file (**you never
 ```console
 foo@bar:~$ echo "your api key" > .clarifai_api_key.txt 
 ```
+
+### Prerequisites
+
+The code is based on the following packages that have to be installed in advance:
+* NumPy
+* OpenCV
+* Clarifai 
+
+### Running the test
+
+In order to test the application, I have created Anon's frienst list:
+<ul>
+    <li><img src="https://github.com/timudk/smart_doorbell/blob/master/test_friend_list/images/friend_angela.jpg"></li>
+    <li><img src="https://github.com/timudk/smart_doorbell/blob/master/test_friend_list/images/friend_angelique.jpg"></li>
+</ul>
