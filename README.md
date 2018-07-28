@@ -18,36 +18,14 @@ The code is based on the following packages that have to be installed in advance
 
 ### Running the test
 
-In order to test the application, I have created Anon's frienst list:
-<html>
-<head>
-(setq markdown-xhtml-header-content
-"<style type='text/css'>
-  .container {
-    float: left;
-  }
-
-  .image {
-    display: block
-  }
-
-  .caption {
-    display: block;
-    width: 100%;
-    text-align: center; //assuming centered captions
-  }
-</style>")
-</head>
-<body>
-<ul>
-  <li class="container">
-    <img class="image" src="https://github.com/timudk/smart_doorbell/blob/master/test_friend_list/images/friend_angela.jpg"  width = "100" />
-    <span class="caption">my caption</span>
-  </li>
-  <li class="container">
-    <img class="image" src="https://github.com/timudk/smart_doorbell/blob/master/test_friend_list/images/friend_angelique.jpg"  width = "100" />
-    <span class="caption">my caption</span>
-  </li>
-</ul>
-</body>
-</html>
+In order to test the application, I have created Anon's frienst list including:
+* Angela Merkel
+* Angelique Kerber
+* Barack Obama
+* Cristiano Ronaldo
+* DeMar DeRozan
+* LeBron James
+* Jimmy Kimmel
+* Marie Curie
+* Messi
+* Richard Feynman
