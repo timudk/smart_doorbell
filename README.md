@@ -42,4 +42,4 @@ foo@bar:~$ echo python3 doorbell.py
 
 ## Comming soon
 
-The face embedding is based on the Euclidean distance of the 1024-dimensional image representation. If this distance between two faces is less than **0.85** the doorbell treat them as the same person. I am working on a neural network (similar to [FaceNet](https://arxiv.org/abs/1503.03832) ) using the database [Labeled Faces in the Wild](http://vis-www.cs.umass.edu/lfw/) that should drastically improve the current solution.
+The face embedding is based on the Euclidean distance of the 1024-dimensional image representation. If this distance between two faces is less than **0.85** the doorbell treats them as the same person. I am working on a neural network (similar to [FaceNet](https://arxiv.org/abs/1503.03832) ) using the database [Labeled Faces in the Wild](http://vis-www.cs.umass.edu/lfw/) that should drastically improve the current solution.
