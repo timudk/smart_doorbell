@@ -29,3 +29,13 @@ In order to test the application, I have created Anon's frienst list including:
 * Marie Curie
 * Messi
 * Richard Feynman
+
+You can now test if the doorbell works by:
+```console
+foo@bar:~$ echo python3 doorbell.py 
+```
+* Press *Quit* in the first textbox
+* Press *l* and type test_friend_list/friend_list_anon
+* A message should pop up saying that the friend list has been loaded
+* Show a picture of either of Anon's friends to your webcam and press *c*
+* A message for Anon's frined (e.g. **Hello Marie**) should pop up
