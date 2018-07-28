@@ -1,16 +1,19 @@
-.container {
-  float: left;
-}
+(setq markdown-xhtml-header-content
+"<style type='text/css'>
+  .container {
+    float: left;
+  }
 
-.image {
-  display: block
-}
+  .image {
+    display: block
+  }
 
-.caption {
-  display: block;
-  width: 100%;
-  text-align: center; //assuming centered captions
-}
+  .caption {
+    display: block;
+    width: 100%;
+    text-align: center; //assuming centered captions
+  }
+</style>")
 
 # Smart doorbell
 Find out who is ringing your door bell and pass on personalized messages to your visitors when you are not at home. 
