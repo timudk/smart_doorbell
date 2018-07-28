@@ -2,14 +2,16 @@ from tkinter import *
 
 class Textbox():
 	def __init__(self):
-		self.Master = Tk()
-		self.Entry=Entry(self.Master)
-		self.Entry.pack()
-		self.Button=Button(self.Master,text="Submit",command=self.Return)
-		self.Button.pack()            
+		self.master = Tk()
 
-		self.Master.mainloop()
+		self.entry = Entry(self.master)
+		self.entry.pack()
 
-	def Return(self):
-		self.TempVar=self.Entry.get()
-		self.Master.destroy()
+		self.button = Button(self.master,text="Submit",command=self.return_variable)
+		self.button.pack()            
+
+		self.master.mainloop()
+
+	def return_variable(self):
+		self.temp_var = self.entry.get()
+		self.master.destroy()

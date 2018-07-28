@@ -19,6 +19,8 @@ class Doorbell():
 
 		self.show_message = 0
 
+		self.limit = 0.85
+
 	def read_api_key(self):
 		with open('.clarifai_api_key.txt', 'r') as file:
 			key = file.read().splitlines()
@@ -86,7 +88,7 @@ class Doorbell():
 
 	def save_friendlist(self):
 		friend_list = Textbox()
-		filename = 'friend_list_{}.pickle'.format(friend_list.temp_var)
+		filename = friend_list.temp_var
 
 		with open(filename, 'wb') as handle:
 			pickle.dump(self.friends, handle, protocol=pickle.HIGHEST_PROTOCOL)
@@ -94,8 +96,7 @@ class Doorbell():
 
 	def load_friendlist(self):
 		friend_list = Textbox()
-		filename = 'friend_list_{}.pickle'.format(friend_list.temp_var)
-		print(filename)
+		filename = friend_list.temp_var
 
 		try:
 			with open(filename, 'rb') as handle:
@@ -124,11 +125,13 @@ class Doorbell():
 			differences.append(L2(pic2, friend[1]))
 
 		if len(differences) > 0:
-			if min(differences) < 0.8:
+			if min(differences) < self.limit:
 				self.friend_name = self.friends[differences.index(min(differences))][0]
 				self.show_message = 1
 			else:
 				self.show_message = 2
+
+			print('Difference is: {}'.format(min(differences)))
 		else:
 			self.show_message = 2
 
