@@ -42,19 +42,25 @@ class Doorbell():
 		cv2.imshow('Video', frame)
 
 	def no_friend_message(self, frame):
-		message = 'It seems like you have not been added to the friend list yet.'
+		message = 'It seems like you have not been added to this friend list yet.'
 
 		cv2.putText(frame, message, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, 2)
 		cv2.imshow('Video', frame)
 
-	def no_list_to_load_message(frame):
-		message = 'It seems like there is no friend list to load.'
+	def no_list_to_load_message(self, frame):
+		message = 'It seems like there is no friend list to load with this name.'
 
 		cv2.putText(frame, message, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, 2)
 		cv2.imshow('Video', frame)
 
-	def list_saved_message(frame):
-		message = 'Your friend list has been saved successfully.'
+	def list_saved_message(self, frame):
+		message = 'Your friend list has been successfully saved.'
+
+		cv2.putText(frame, message, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, 2)
+		cv2.imshow('Video', frame)
+
+	def list_loaded_message(self, frame):
+		message = 'Friend list has been successfully loaded.'
 
 		cv2.putText(frame, message, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, 2)
 		cv2.imshow('Video', frame)
@@ -66,7 +72,7 @@ class Doorbell():
 		cv2.imwrite(friend_img_name, frame)
 		print('{} written!'.format(friend_img_name))
 
-		self.friends.append([friend.TempVar, self.extraxt_embedding(friend_img_name)])
+		self.friends.append([friend.temp_var, self.extraxt_embedding(friend_img_name)])
 
 	def extraxt_embedding(self, filename):
 		usr_img = ClImage(filename=filename)
@@ -79,14 +85,22 @@ class Doorbell():
 				print ("Oops!  That was no valid number.  Try again...")
 
 	def save_friendlist(self):
-		with open('friend_list.pickle', 'wb') as handle:
+		friend_list = Textbox()
+		filename = 'friend_list_{}.pickle'.format(friend_list.temp_var)
+
+		with open(filename, 'wb') as handle:
 			pickle.dump(self.friends, handle, protocol=pickle.HIGHEST_PROTOCOL)
 		self.show_message = 4
 
 	def load_friendlist(self):
+		friend_list = Textbox()
+		filename = 'friend_list_{}.pickle'.format(friend_list.temp_var)
+		print(filename)
+
 		try:
-			with open('friend_list.pickle', 'rb') as handle:
+			with open(filename, 'rb') as handle:
 				self.friends = pickle.load(handle)
+				self.show_message = 5
 				print('Loaded friend list.')
 		except IOError:
 			self.show_message = 3
@@ -140,6 +154,8 @@ class Doorbell():
 				self.no_list_to_load_message(frame)
 			elif self.show_message==4:
 				self.list_saved_message(frame)
+			elif self.show_message==5:
+				self.list_loaded_message(frame)
 
 			if k%256 == 27:
 				# ESC pressed
