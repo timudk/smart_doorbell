@@ -20,6 +20,6 @@ The code is based on the following packages that have to be installed in advance
 
 In order to test the application, I have created Anon's frienst list:
 <ul>
-    <li><img src="https://github.com/timudk/smart_doorbell/blob/master/test_friend_list/images/friend_angela.jpg"></li>
-    <li><img src="https://github.com/timudk/smart_doorbell/blob/master/test_friend_list/images/friend_angelique.jpg"></li>
+    <li><img src="https://github.com/timudk/smart_doorbell/blob/master/test_friend_list/images/friend_angela.jpg" width="100"></li>
+    <li><img src="https://github.com/timudk/smart_doorbell/blob/master/test_friend_list/images/friend_angelique.jpg" width="100"></li>
 </ul>
