@@ -1,5 +1,6 @@
 import numpy as np
 import cv2 
+import pickle
 
 from clarifai.rest import ClarifaiApp
 from clarifai.rest import Image as ClImage
@@ -25,7 +26,8 @@ class Doorbell():
 
 	def start_message(self, frame):
 
-		message = 'Hello their.\nAdd a new friend by pressing f.\nCheck who is in front of your door by pressing c.\nPress h to see this message.'
+		message = '''Hello their.\nAdd a new friend by pressing f.\nCheck who is in front of your door by pressing c.\nSave your friendlist by pressing s.\nLoad your friendlist by pressing l.\nClose this application with esc.\nSee this message by pressing h.'''
+		
 		y0, dy = 50, 50
 		for i, line in enumerate(message.split('\n')):
 			y = y0 + i*dy
@@ -45,6 +47,17 @@ class Doorbell():
 		cv2.putText(frame, message, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, 2)
 		cv2.imshow('Video', frame)
 
+	def no_list_to_load_message(frame):
+		message = 'It seems like there is no friend list to load.'
+
+		cv2.putText(frame, message, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, 2)
+		cv2.imshow('Video', frame)
+
+	def list_saved_message(frame):
+		message = 'Your friend list has been saved successfully.'
+
+		cv2.putText(frame, message, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, 2)
+		cv2.imshow('Video', frame)
 
 	def add_friend(self, frame):
 		friend = Textbox()
@@ -65,6 +78,19 @@ class Doorbell():
 			except KeyError:
 				print ("Oops!  That was no valid number.  Try again...")
 
+	def save_friendlist(self):
+		with open('friend_list.pickle', 'wb') as handle:
+			pickle.dump(self.friends, handle, protocol=pickle.HIGHEST_PROTOCOL)
+		self.show_message = 4
+
+	def load_friendlist(self):
+		try:
+			with open('friend_list.pickle', 'rb') as handle:
+				self.friends = pickle.load(handle)
+				print('Loaded friend list.')
+		except IOError:
+			self.show_message = 3
+
 	def check_friend(self, frame):
 		img_name = 'tmp.png'
 		cv2.imwrite(img_name, frame)
@@ -83,9 +109,12 @@ class Doorbell():
 
 			differences.append(L2(pic2, friend[1]))
 
-		if min(differences) < 0.8:
-			self.friend_name = self.friends[differences.index(min(differences))][0]
-			self.show_message = 1
+		if len(differences) > 0:
+			if min(differences) < 0.8:
+				self.friend_name = self.friends[differences.index(min(differences))][0]
+				self.show_message = 1
+			else:
+				self.show_message = 2
 		else:
 			self.show_message = 2
 
@@ -107,6 +136,10 @@ class Doorbell():
 				self.friend_message(frame)
 			elif self.show_message==2:
 				self.no_friend_message(frame)
+			elif self.show_message==3:
+				self.no_list_to_load_message(frame)
+			elif self.show_message==4:
+				self.list_saved_message(frame)
 
 			if k%256 == 27:
 				# ESC pressed
@@ -123,10 +156,17 @@ class Doorbell():
 				# h pressed
 				self.show_start_message = 1
 
-			elif k%256 ==99:
+			elif k%256 == 99:
 				# c pressed
 				self.check_friend(frame)
 
+			elif k%256 == 115:
+				# s pressed
+				self.save_friendlist()
+
+			elif k%256 == 108:
+				# l pressed
+				self.load_friendlist()
 def main():
 	master = Tk()
 	Button(master, text="Quit", command=master.destroy).pack()
