@@ -6,5 +6,5 @@ This application uses [Clarifai's face embedding model](https://clarifai.com/mod
 
 In order to use the smart doorbell you have to create a hidden file containting your api key:
 ```console
-foo@bar:~$ echo "your api key" > file
+foo@bar:~$ echo "your api key" > .clarifai_api_key.txt 
 ```
