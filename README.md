@@ -14,7 +14,9 @@ foo@bar:~$ echo "your api key" > .clarifai_api_key.txt
 The code is based on the following packages that have to be installed in advance:
 * NumPy
 * OpenCV
-* Clarifai 
+* Clarifai
+* Tensorflow
+* Keras
 
 ### Running the test
 
