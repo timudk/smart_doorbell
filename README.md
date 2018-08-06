@@ -2,7 +2,7 @@
 Find out who is ringing your door bell and pass on personalized messages to your visitors when you are not at home.
 
 ## Neural network
-The smart doorbell is based on [a neural network](https://github.com/timudk/smart_doorbell/blob/master/face_model.h5) (similar to [FaceNet](https://arxiv.org/abs/1503.03832) ) using the database [Labeled Faces in the Wild](http://vis-www.cs.umass.edu/lfw/). The network is trained by feeding in (**just 8460**) pairs of pictures that are either labelled 1 (same person) or 1 (not same person). 
+The smart doorbell is based on [a neural network](https://github.com/timudk/smart_doorbell/blob/master/face_model.h5) (similar to [FaceNet](https://arxiv.org/abs/1503.03832) ) using the database [Labeled Faces in the Wild](http://vis-www.cs.umass.edu/lfw/). The network is trained by feeding in (**just 8460**) pairs of pictures that are either labelled 1 (same person) or 0 (not same person). 
 
 ## Getting started
 This application uses [Clarifai's face embedding model](https://clarifai.com/models/face-embedding-image-recognition-model-d02b4508df58432fbb84e800597b8959). You can create a free account [here](https://clarifai.com/developer/) to get an api key. 
