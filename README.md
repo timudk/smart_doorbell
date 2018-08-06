@@ -1,5 +1,8 @@
 # Smart doorbell
-Find out who is ringing your door bell and pass on personalized messages to your visitors when you are not at home. 
+Find out who is ringing your door bell and pass on personalized messages to your visitors when you are not at home.
+
+## Neural network
+The smart doorbell is based on a neural network (similar to [FaceNet](https://arxiv.org/abs/1503.03832) ) using the database [Labeled Faces in the Wild](http://vis-www.cs.umass.edu/lfw/). The network is trained by feeding in (**just 8460**) pairs of pictures that are either labelled 1 (same person) or 1 (not same person). 
 
 ## Getting started
 This application uses [Clarifai's face embedding model](https://clarifai.com/models/face-embedding-image-recognition-model-d02b4508df58432fbb84e800597b8959). You can create a free account [here](https://clarifai.com/developer/) to get an api key. 
@@ -41,7 +44,3 @@ foo@bar:~$ python3 doorbell.py
 * A message should pop up saying that the friend list has been loaded
 * Show a picture of either of Anon's friends to your webcam and press *c*
 * A message for Anon's frined (e.g. **Hello Marie**) should pop up
-
-## Comming soon
-
-The face embedding is based on the Euclidean distance of the 1024-dimensional image representation. If this distance between two faces is less than **0.85** the doorbell treats them as the same person. I am working on a neural network (similar to [FaceNet](https://arxiv.org/abs/1503.03832) ) using the database [Labeled Faces in the Wild](http://vis-www.cs.umass.edu/lfw/) that should drastically improve the current solution.
