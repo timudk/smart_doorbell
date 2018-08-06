@@ -34,7 +34,7 @@ In order to test the application, I have created Anon's frienst list including:
 
 You can now test if the doorbell works by:
 ```console
-foo@bar:~$ echo python3 doorbell.py 
+foo@bar:~$ python3 doorbell.py 
 ```
 * Press *Quit* in the first textbox
 * Press *l* and type test_friend_list/friend_list_anon
