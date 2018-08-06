@@ -6,7 +6,7 @@ from clarifai.rest import ClarifaiApp
 from clarifai.rest import Image as ClImage
 
 from text_box import Textbox
-from distance_functions import L2
+from distance_functions import L2, neural_network
 
 from tkinter import Tk, Button
 
@@ -70,7 +70,7 @@ class Doorbell():
 	def add_friend(self, frame):
 		friend = Textbox()
 
-		friend_img_name = 'friend_{}.png'.format(friend.TempVar)
+		friend_img_name = 'friend_{}.png'.format(friend.temp_var)
 		cv2.imwrite(friend_img_name, frame)
 		print('{} written!'.format(friend_img_name))
 
@@ -122,7 +122,8 @@ class Doorbell():
 				except KeyError:
 					print ("Oops!  That was no valid number.  Try again...")
 
-			differences.append(L2(pic2, friend[1]))
+			# differences.append(L2(pic2, friend[1]))
+			differences.append(neural_network(pic2, friend[1]))
 
 		if len(differences) > 0:
 			if min(differences) < self.limit:

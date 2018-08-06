@@ -1,4 +1,5 @@
 import numpy as np 
+import keras
 
 def L2(img1, img2):
 	diff = 0
@@ -7,3 +8,11 @@ def L2(img1, img2):
 
 	diff = np.sqrt(diff)
 	return diff
+
+def neural_network(img1, img2):
+	nn = keras.models.load_model('face_model.h5')
+
+	prediction = nn.predict([np.array(img1)[np.newaxis], np.array(img2)[np.newaxis]])
+	print(prediction[0][0])
+
+	return (1-prediction[0][0])
