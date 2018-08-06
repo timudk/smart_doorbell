@@ -19,7 +19,7 @@ class Doorbell():
 
 		self.show_message = 0
 
-		self.limit = 0.85
+		self.limit = 0.1
 
 	def read_api_key(self):
 		with open('.clarifai_api_key.txt', 'r') as file:
