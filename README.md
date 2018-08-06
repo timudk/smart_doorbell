@@ -31,9 +31,6 @@ In order to test the application, I have created Anon's frienst list including:
 * Angelique Kerber
 * Barack Obama
 * Cristiano Ronaldo
-* DeMar DeRozan
-* LeBron James
-* Jimmy Kimmel
 * Marie Curie
 * Messi
 * Richard Feynman
