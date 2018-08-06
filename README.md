@@ -2,7 +2,7 @@
 Find out who is ringing your door bell and pass on personalized messages to your visitors when you are not at home.
 
 ## Neural network
-The smart doorbell is based on [a neural network](https://github.com/timudk/smart_doorbell/blob/master/face_model.h5) (similar to [FaceNet](https://arxiv.org/abs/1503.03832) ) using the database [Labeled Faces in the Wild](http://vis-www.cs.umass.edu/lfw/). The network is trained by feeding in (**just 8460**) pairs of pictures that are either labeled 1 (same person) or 0 (not same person). The architecture of the neural network is visualized in the following picture.
+The smart doorbell is based on [multilayer perceptron](https://github.com/timudk/smart_doorbell/blob/master/face_model.h5) using the database [Labeled Faces in the Wild](http://vis-www.cs.umass.edu/lfw/). The network is trained by feeding in (**just 8460**) pairs of pictures that are either labeled 1 (same person) or 0 (not same person). The architecture of the neural network is visualized in the following picture.
 
 <p align="center">
   <img src="https://github.com/timudk/smart_doorbell/blob/master/neural_network/model_plot.png" width="500">
